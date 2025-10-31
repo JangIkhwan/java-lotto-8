@@ -3,6 +3,7 @@ package lotto.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,5 +39,20 @@ class LottoPaymentTest {
         // when & then
         assertThatThrownBy(() -> new LottoPayment(amount))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 개수 계산에 성공한다")
+    @Test
+    void shouldCalculateNumberOfLotto(){
+        // given
+        int payment = 20000;
+        LottoPayment lottoPayment = new LottoPayment(payment);
+        int lottoPrice = 1000;
+
+        // when
+        int number = lottoPayment.caculateNumberOfLottos(lottoPrice);
+
+        // then
+        assertThat(number).isEqualTo(payment / lottoPrice);
     }
 }

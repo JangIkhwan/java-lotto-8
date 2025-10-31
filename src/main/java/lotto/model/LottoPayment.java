@@ -11,4 +11,8 @@ public class LottoPayment {
         }
         this.amount = amount;
     }
+
+    public int caculateNumberOfLottos(int lottoPrice) {
+        return amount / lottoPrice;
+    }
 }
