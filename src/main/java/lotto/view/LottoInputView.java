@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.model.LottoNumber;
 import lotto.model.LottoPayment;
 import lotto.model.LottoWiningNumbers;
 
@@ -34,6 +35,22 @@ public class LottoInputView {
             String line = Console.readLine();
             try{
                 return lottoInputParser.parseWinningNumbers(line);
+            }
+            catch (NumberFormatException e){
+                System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            }
+            catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public LottoNumber getBonusNumber(LottoWiningNumbers lottoWiningNumbers) {
+        while(true){
+            System.out.println("보너스 번호를 입력해 주세요.");
+            String line = Console.readLine();
+            try{
+                return lottoInputParser.parseBonusNumber(lottoWiningNumbers, line);
             }
             catch (NumberFormatException e){
                 System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");

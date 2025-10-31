@@ -29,4 +29,9 @@ public class LottoWiningNumbers {
         }
     }
 
+    public void validateBonusNumber(LottoNumber bonusNumber) {
+        if(winningNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 당첨 번호와 겹칠 수 없습니다.");
+        }
+    }
 }

@@ -21,4 +21,11 @@ public class LottoInputParser {
         }
         return new LottoWiningNumbers(numbers);
     }
+
+    public LottoNumber parseBonusNumber(LottoWiningNumbers lottoWiningNumbers, String line) {
+        int number = Integer.parseInt(line);
+        LottoNumber bonusNumber = new LottoNumber(number);
+        lottoWiningNumbers.validateBonusNumber(bonusNumber);
+        return bonusNumber;
+    }
 }

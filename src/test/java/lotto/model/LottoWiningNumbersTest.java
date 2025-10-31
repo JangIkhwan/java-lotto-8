@@ -66,4 +66,25 @@ class LottoWiningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 당첨번호와 겹치면 예외를 발생시킨다")
+    @Test
+    void shouldThrowExceptionWhenBonusNumberIsDuplicate(){
+        // given
+        int sameNumber = 1;
+        List<LottoNumber> lottoNumbers = List.of(new LottoNumber(sameNumber),
+                new LottoNumber(2),
+                new LottoNumber(3),
+                new LottoNumber(4),
+                new LottoNumber(5),
+                new LottoNumber(6));
+
+        LottoWiningNumbers winingNumbers = new LottoWiningNumbers(lottoNumbers);
+
+        LottoNumber bonusNumber = new LottoNumber(sameNumber);
+
+        // when & then
+        assertThatThrownBy(() -> winingNumbers.validateBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
