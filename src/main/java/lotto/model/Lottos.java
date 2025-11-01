@@ -1,5 +1,8 @@
 package lotto.model;
 
+import lotto.model.judge.LottoJudge;
+import lotto.model.judge.LottosResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +17,6 @@ public class Lottos {
         this.lottos.addAll(lottos);
     }
 
-    public LottoResult getResult(LottoWiningNumbers winningNumbers, LottoNumber bonusNumber, LottoWinningPolicy lottoWinningPolicy) {
-        return null;
-    }
-
     public LottosStatus getStatus() {
         List<Lotto> copyedLottos = lottos.stream()
                 .map(Lotto::new)
@@ -25,7 +24,10 @@ public class Lottos {
         return new LottosStatus(copyedLottos);
     }
 
-    public LottoResult checkWinning(LottoWiningNumbers winningNumbers, LottoNumber bonusNumber, LottoWinningPolicy lottoWinningPolicy) {
-        return null;
+    public LottosResult checkWinning(LottoJudge lottoJudge) {
+        for(Lotto lotto : lottos){
+            lottoJudge.check(lotto);
+        }
+        return lottoJudge.getResult();
     }
 }

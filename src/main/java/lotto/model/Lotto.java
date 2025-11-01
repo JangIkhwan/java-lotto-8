@@ -1,30 +1,46 @@
 package lotto.model;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<LottoNumber> numbers) {
         validate(numbers);
-        numbers.sort(Integer::compareTo);
+        numbers.sort(Comparator.comparing(LottoNumber::getValue));
         this.numbers = numbers;
     }
 
     public Lotto(Lotto lotto){
-       this.numbers = lotto.getNumbers();
+        List<LottoNumber> copyedNumbers = lotto.numbers.stream()
+                .map(LottoNumber::new)
+                .toList();
+        this.numbers = copyedNumbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<LottoNumber> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
     }
 
-    private List<Integer> getNumbers(){
-        List<Integer> copyedNumbers = numbers.stream()
-                .map(i -> Integer.valueOf(i))
-                .toList();
-        return copyedNumbers;
+    public int matchWinningNumber(LottoWiningNumbers winningNumbers) {
+        int matched = 0;
+        for(LottoNumber number : numbers){
+            if(winningNumbers.contains(number)){
+                matched++;
+            }
+        }
+        return matched;
+    }
+
+    public boolean matchBonusNumber(LottoNumber bonusNumber) {
+        for(LottoNumber number : numbers){
+            if(number.equals(bonusNumber)){
+                return true;
+            }
+        }
+        return false;
     }
 }

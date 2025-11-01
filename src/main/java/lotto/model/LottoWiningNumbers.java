@@ -34,4 +34,13 @@ public class LottoWiningNumbers {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 당첨 번호와 겹칠 수 없습니다.");
         }
     }
+
+    public boolean contains(LottoNumber number) {
+        for(LottoNumber winningNumber : winningNumbers){
+            if(winningNumber.equals(number)){
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -15,4 +15,8 @@ public class LottoPayment {
     public int caculateNumberOfLottos(int lottoPrice) {
         return amount / lottoPrice;
     }
+
+    public int getValue() {
+        return amount;
+    }
 }
