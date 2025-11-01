@@ -1,5 +1,7 @@
-package lotto.model;
+package lotto.model.runner;
 
+import lotto.model.*;
+import lotto.model.factory.LottoIssuer;
 import lotto.model.judge.LottoJudge;
 import lotto.model.judge.LottosResult;
 

@@ -1,12 +1,12 @@
 package lotto.model;
 
+import lotto.model.factory.LottoIssuer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoIssuerTest {
     @DisplayName("로또 발행에 성공한다")
