@@ -7,7 +7,12 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        numbers.sort(Integer::compareTo);
         this.numbers = numbers;
+    }
+
+    public Lotto(Lotto lotto){
+       this.numbers = lotto.getNumbers();
     }
 
     private void validate(List<Integer> numbers) {
@@ -16,5 +21,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private List<Integer> getNumbers(){
+        List<Integer> copyedNumbers = numbers.stream()
+                .map(i -> Integer.valueOf(i))
+                .toList();
+        return copyedNumbers;
+    }
 }

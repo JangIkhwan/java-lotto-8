@@ -9,7 +9,8 @@ public class LottoRunner {
         this.lottoIssuer = lottoIssuer;
     }
 
-    public void issueLottos(LottoPayment payment) {
+    public LottosStatus issueLottos(LottoPayment payment) {
         lottos.addAll(lottoIssuer.issueLottos(payment));
+        return lottos.getStatus();
     }
 }

@@ -4,17 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {
-    List<Lotto> lottos;
+    private List<Lotto> lottos;
 
     public Lottos(){
         lottos = new ArrayList<>();
     }
 
     public void addAll(List<Lotto> lottos) {
-        lottos.addAll(lottos);
+        this.lottos.addAll(lottos);
     }
 
-    public LottoResult checkWinning(LottoWiningNumbers winningNumbers, Integer bonusNumber, LottoWinningPolicy lottoWinningPolicy) {
+    public LottoResult getResult(LottoWiningNumbers winningNumbers, LottoNumber bonusNumber, LottoWinningPolicy lottoWinningPolicy) {
+        return null;
+    }
+
+    public LottosStatus getStatus() {
+        List<Lotto> copyedLottos = lottos.stream()
+                .map(Lotto::new)
+                .toList();
+        return new LottosStatus(copyedLottos);
+    }
+
+    public LottoResult checkWinning(LottoWiningNumbers winningNumbers, LottoNumber bonusNumber, LottoWinningPolicy lottoWinningPolicy) {
         return null;
     }
 }
