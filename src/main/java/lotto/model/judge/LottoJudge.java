@@ -53,7 +53,7 @@ public class LottoJudge {
 
     public LottosResult getResult(){
         LottosResult lottosResult = new LottosResult();
-        int profit = 0;
+        long profit = 0;
         for(LottoWinningInfo rank : LottoWinningInfo.values()){
             lottosResult.addRow(rank.getCondition(), rank.getWinnings(), rankCount[rank.getRank().getValue()]);
             profit += rankCount[rank.getRank().getValue()] * rank.getWinnings();
