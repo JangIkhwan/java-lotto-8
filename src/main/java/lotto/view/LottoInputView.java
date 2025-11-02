@@ -17,8 +17,9 @@ public class LottoInputView {
             System.out.println("구입금액을 입력해 주세요.");
             String line = Console.readLine();
             try {
-                int amount = Integer.parseInt(line);
-                return new LottoPayment(amount);
+                LottoPayment lottoPayment = lottoInputParser.parseLottoPayment(line);
+                System.out.println();
+                return lottoPayment;
             }
             catch (NumberFormatException e){
                 System.out.println("[ERROR] 구입금액은 정수여야 합니다.");
@@ -34,7 +35,9 @@ public class LottoInputView {
             System.out.println("당첨 번호를 입력해 주세요.");
             String line = Console.readLine();
             try{
-                return lottoInputParser.parseWinningNumbers(line);
+                LottoWiningNumbers winingNumbers = lottoInputParser.parseWinningNumbers(line);
+                System.out.println();
+                return winingNumbers;
             }
             catch (NumberFormatException e){
                 System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
@@ -50,7 +53,9 @@ public class LottoInputView {
             System.out.println("보너스 번호를 입력해 주세요.");
             String line = Console.readLine();
             try{
-                return lottoInputParser.parseBonusNumber(lottoWiningNumbers, line);
+                LottoNumber bonusNumber = lottoInputParser.parseBonusNumber(lottoWiningNumbers, line);
+                System.out.println();
+                return bonusNumber;
             }
             catch (NumberFormatException e){
                 System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");

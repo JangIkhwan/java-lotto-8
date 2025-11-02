@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.model.LottoNumber;
+import lotto.model.LottoPayment;
 import lotto.model.LottoWiningNumbers;
 
 import java.util.ArrayList;
@@ -27,5 +28,10 @@ public class LottoInputParser {
         LottoNumber bonusNumber = new LottoNumber(number);
         lottoWiningNumbers.validateBonusNumber(bonusNumber);
         return bonusNumber;
+    }
+
+    public LottoPayment parseLottoPayment(String line) {
+        int amount = Integer.parseInt(line);
+        return new LottoPayment(amount);
     }
 }

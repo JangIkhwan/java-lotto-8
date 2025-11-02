@@ -14,9 +14,11 @@ public class LottoOutputView {
         for(Lotto lotto : lottos){
             System.out.println(lotto.convertToString());
         }
+        System.out.println();
     }
 
     public void printResult(LottosResult result) {
+        System.out.println("당첨 통계\n---");
         for(LottosResult.ResultRow row : result.getRows()){
             String winnings = new DecimalFormat("#,##0").format(row.getWinnings());
             System.out.println(row.getCondition() + " (" + winnings +"원) - " + row.getCount() + "개");
