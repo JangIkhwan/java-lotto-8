@@ -1,7 +1,9 @@
 package lotto.model;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -23,6 +25,13 @@ public class Lotto {
     private void validate(List<LottoNumber> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        }
+        Set<LottoNumber> existings = new HashSet<>();
+        for(LottoNumber number : numbers){
+            if(existings.contains(number)){
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복된 숫자가 없어야 합니다.");
+            }
+            existings.add(number);
         }
     }
 
