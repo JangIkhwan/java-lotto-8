@@ -21,32 +21,46 @@ public class LottoInputView {
                 System.out.println();
                 return lottoPayment;
             }
-            catch (NumberFormatException e){
-                System.out.println("[ERROR] 구입금액은 정수여야 합니다.");
-            }
-            catch (IllegalArgumentException e){
-                System.out.println(e.getMessage());
+            catch (RuntimeException e){
+                printPaymentError(e);
             }
         }
     }
 
+    private void printPaymentError(RuntimeException e) {
+        if (e instanceof NumberFormatException){
+            System.out.println("[ERROR] 구입금액은 정수여야 합니다.");
+            return;
+        }
+        if(e instanceof IllegalArgumentException){
+            System.out.println(e.getMessage());
+        }
+    }
+
     public LottoWiningNumbers getWiningNumbers() {
-        while(true){
+        while(true) {
             System.out.println("당첨 번호를 입력해 주세요.");
             String line = Console.readLine();
-            try{
+            try {
                 LottoWiningNumbers winingNumbers = lottoInputParser.parseWinningNumbers(line);
                 System.out.println();
                 return winingNumbers;
-            }
-            catch (NumberFormatException e){
-                System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
-            }
-            catch (IllegalArgumentException e){
-                System.out.println(e.getMessage());
+            } catch (RuntimeException e) {
+                printWinningNumbersError(e);
             }
         }
     }
+
+    private void printWinningNumbersError(RuntimeException e) {
+        if(e instanceof NumberFormatException ){
+            System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            return;
+        }
+        if (e instanceof IllegalArgumentException){
+            System.out.println(e.getMessage());
+        }
+    }
+
 
     public LottoNumber getBonusNumber(LottoWiningNumbers lottoWiningNumbers) {
         while(true){
@@ -57,12 +71,20 @@ public class LottoInputView {
                 System.out.println();
                 return bonusNumber;
             }
-            catch (NumberFormatException e){
-                System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
-            }
-            catch (IllegalArgumentException e){
-                System.out.println(e.getMessage());
+            catch (RuntimeException e){
+                printBonuseNumberError(e);
             }
         }
     }
+
+    private void printBonuseNumberError(RuntimeException e) {
+        if(e instanceof NumberFormatException ){
+            System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            return;
+        }
+        if (e instanceof IllegalArgumentException ){
+            System.out.println(e.getMessage());
+        }
+    }
 }
+
