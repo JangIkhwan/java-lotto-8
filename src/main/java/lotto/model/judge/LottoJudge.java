@@ -58,7 +58,7 @@ public class LottoJudge {
             lottosResult.addRow(rank.getCondition(), rank.getWinnings(), rankCount[rank.getRank().getValue()]);
             profit += rankCount[rank.getRank().getValue()] * rank.getWinnings();
         }
-        lottosResult.setRoi((double) profit / payment.getValue());
+        lottosResult.setRoi((double) (profit * 100) / payment.getValue());
         return lottosResult;
     }
 }
