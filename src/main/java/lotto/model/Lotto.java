@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<LottoNumber> numbers;
@@ -42,5 +43,12 @@ public class Lotto {
             }
         }
         return false;
+    }
+
+    public String convertToString() {
+        String collect = numbers.stream()
+                .map(LottoNumber::convertToString)
+                .collect(Collectors.joining(", "));
+        return "[" + collect + "]";
     }
 }

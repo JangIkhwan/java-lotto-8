@@ -20,7 +20,7 @@ public class LottosResult {
         this.roi = roi;
     }
 
-    static class ResultRow{
+    public static class ResultRow{
         private String condition;
         private Integer winnings;
         private Integer count;

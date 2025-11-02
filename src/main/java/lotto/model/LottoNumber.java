@@ -35,4 +35,8 @@ public class LottoNumber {
     public int getValue() {
         return number;
     }
+
+    public String convertToString() {
+        return String.valueOf(number);
+    }
 }
