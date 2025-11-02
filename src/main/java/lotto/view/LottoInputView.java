@@ -24,7 +24,7 @@ public class LottoInputView {
                 System.out.println("[ERROR] 구입금액은 정수여야 합니다.");
             }
             catch (IllegalArgumentException e){
-                System.out.println("[ERROR] " + e.getMessage());
+                System.out.println(e.getMessage());
             }
         }
     }
