@@ -162,6 +162,6 @@ class LottoJudgeTest {
         assertThat(result.getRows().get(2).getCount()).isEqualTo(0);
         assertThat(result.getRows().get(3).getCount()).isEqualTo(0);
         assertThat(result.getRows().get(4).getCount()).isEqualTo(2);
-        assertThat(result.getRoi()).isEqualTo((double) (LottoWinningInfo.FIRST.getWinnings() * 2) / 2000);
+        assertThat(result.getRoi()).isEqualTo((double) (LottoWinningInfo.FIRST.getWinnings() * 100 * 2) / 2000);
     }
 }
