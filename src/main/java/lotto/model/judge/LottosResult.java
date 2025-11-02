@@ -12,7 +12,7 @@ public class LottosResult {
         roi = 0.0;
     }
 
-    public void addRow(String condition, Integer winnings, Integer count){
+    public void addRow(String condition, Long winnings, Integer count){
         rows.add(new ResultRow(condition, winnings, count));
     }
 
@@ -22,10 +22,10 @@ public class LottosResult {
 
     public static class ResultRow{
         private String condition;
-        private Integer winnings;
+        private Long winnings;
         private Integer count;
 
-        public ResultRow(String condition, Integer winnings, Integer count) {
+        public ResultRow(String condition, Long winnings, Integer count) {
             this.condition = condition;
             this.winnings = winnings;
             this.count = count;
@@ -35,7 +35,7 @@ public class LottosResult {
             return condition;
         }
 
-        public Integer getWinnings() {
+        public Long getWinnings() {
             return winnings;
         }
 

@@ -9,9 +9,9 @@ public enum LottoWinningInfo {
 
     private final LottoRank rank;
     private final String condition;
-    private final int winnings;
+    private final long winnings;
 
-    LottoWinningInfo(LottoRank rank, String condition, int winnings) {
+    LottoWinningInfo(LottoRank rank, String condition, long winnings) {
         this.rank = rank;
         this.condition = condition;
         this.winnings = winnings;
@@ -25,7 +25,7 @@ public enum LottoWinningInfo {
         return condition;
     }
 
-    public int getWinnings() {
+    public long getWinnings() {
         return winnings;
     }
 }
