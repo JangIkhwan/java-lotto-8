@@ -146,7 +146,7 @@ class LottoJudgeTest {
 
         LottoWiningNumbers winingNumbers = new LottoWiningNumbers(firstWinningNumbers);
         LottoNumber bonusNumber = new LottoNumber(9);
-        LottoPayment lottoPayment = new LottoPayment(2000);
+        LottoPayment lottoPayment = new LottoPayment(3000);
         LottoJudge lottoJudge = new LottoJudge(winingNumbers, bonusNumber, lottoPayment);
 
         // when
@@ -162,6 +162,6 @@ class LottoJudgeTest {
         assertThat(result.getRows().get(2).getCount()).isEqualTo(0);
         assertThat(result.getRows().get(3).getCount()).isEqualTo(0);
         assertThat(result.getRows().get(4).getCount()).isEqualTo(2);
-        assertThat(result.getRoi()).isEqualTo((double) (LottoWinningInfo.FIRST.getWinnings() * 100 * 2) / 2000);
+        assertThat(result.getRoi()).isEqualTo((double) (LottoWinningInfo.FIRST.getWinnings() * 100 * 2) / lottoPayment.getValue());
     }
 }
