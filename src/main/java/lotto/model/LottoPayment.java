@@ -1,13 +1,16 @@
 package lotto.model;
 
+import static lotto.common.ErrorMessage.PAYMENT_IS_OUT_OF_RANGE;
+import static lotto.common.ErrorMessage.PAYMENT_UNIT_IS_INVALID;
+
 public class LottoPayment {
     private int amount;
     public LottoPayment(int amount) {
         if(amount < 0){
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 음수일 수 없습니다.");
+            throw new IllegalArgumentException(PAYMENT_IS_OUT_OF_RANGE.getMessage());
         }
         if(amount % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위로 나누어 떨어져야 합니다.");
+            throw new IllegalArgumentException(PAYMENT_UNIT_IS_INVALID.getMessage());
         }
         this.amount = amount;
     }

@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static lotto.common.ErrorMessage.LOTTO_NUMBER_COUNT_IS_INVALID;
+import static lotto.common.ErrorMessage.LOTTO_NUMBER_IS_DUPLICATE;
+
 public class Lotto {
     private final List<LottoNumber> numbers;
 
@@ -24,12 +27,12 @@ public class Lotto {
 
     private void validate(List<LottoNumber> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(LOTTO_NUMBER_COUNT_IS_INVALID.getMessage());
         }
         Set<LottoNumber> existings = new HashSet<>();
         for(LottoNumber number : numbers){
             if(existings.contains(number)){
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복된 숫자가 없어야 합니다.");
+                throw new IllegalArgumentException(LOTTO_NUMBER_IS_DUPLICATE.getMessage());
             }
             existings.add(number);
         }

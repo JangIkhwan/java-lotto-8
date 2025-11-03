@@ -2,6 +2,8 @@ package lotto.model;
 
 import java.util.Objects;
 
+import static lotto.common.ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE;
+
 public class LottoNumber {
     private final int number;
 
@@ -16,7 +18,7 @@ public class LottoNumber {
 
     private static void validateRange(int number) {
         if(number < 1 || number > 45){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
         }
     }
 

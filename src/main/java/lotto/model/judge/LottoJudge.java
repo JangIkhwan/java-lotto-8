@@ -8,6 +8,8 @@ import lotto.model.LottoWiningNumbers;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.common.ErrorMessage.PARAMETER_IS_NULL;
+
 public class LottoJudge {
     private LottoWiningNumbers winningNumbers;
     private LottoNumber bonusNumber;
@@ -17,7 +19,7 @@ public class LottoJudge {
 
     public LottoJudge(LottoWiningNumbers winningNumbers, LottoNumber bonusNumber, LottoPayment payment) {
         if(winningNumbers == null || bonusNumber == null || payment == null){
-            throw new IllegalArgumentException("[ERROR] 인자는 null일 수 없습니다");
+            throw new IllegalArgumentException(PARAMETER_IS_NULL.getMessage());
         }
         winningNumbers.validateBonusNumber(bonusNumber);
         this.winningNumbers = winningNumbers;
@@ -38,7 +40,7 @@ public class LottoJudge {
 
     public LottoRank check(Lotto lotto) {
         if(lotto == null){
-            throw new IllegalArgumentException("[ERROR] 인자는 null일 수 없습니다");
+            throw new IllegalArgumentException(PARAMETER_IS_NULL.getMessage());
         }
         int matchedCount = lotto.matchWinningNumber(winningNumbers);
         boolean bonusMatched = lotto.matchBonusNumber(bonusNumber);

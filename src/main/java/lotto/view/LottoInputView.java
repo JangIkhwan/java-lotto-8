@@ -5,6 +5,8 @@ import lotto.model.LottoNumber;
 import lotto.model.LottoPayment;
 import lotto.model.LottoWiningNumbers;
 
+import static lotto.common.ErrorMessage.*;
+
 public class LottoInputView {
     private LottoInputParser lottoInputParser;
 
@@ -29,7 +31,7 @@ public class LottoInputView {
 
     private void printPaymentError(RuntimeException e) {
         if (e instanceof NumberFormatException){
-            System.out.println("[ERROR] 구입금액은 정수여야 합니다.");
+            System.out.println(PAYMENT_IS_NOT_INTEGER.getMessage());
             return;
         }
         if(e instanceof IllegalArgumentException){
@@ -53,7 +55,7 @@ public class LottoInputView {
 
     private void printWinningNumbersError(RuntimeException e) {
         if(e instanceof NumberFormatException ){
-            System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            System.out.println(WINNING_NUMBER_IS_NOT_INTEGER.getMessage());
             return;
         }
         if (e instanceof IllegalArgumentException){
@@ -79,7 +81,7 @@ public class LottoInputView {
 
     private void printBonuseNumberError(RuntimeException e) {
         if(e instanceof NumberFormatException ){
-            System.out.println("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            System.out.println(BONUS_NUMBER_IS_NOT_INTEGER.getMessage());
             return;
         }
         if (e instanceof IllegalArgumentException ){
