@@ -3,6 +3,8 @@ package lotto.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static lotto.common.ErrorMessage.PAYMENT_IS_OUT_OF_RANGE;
+import static lotto.common.ErrorMessage.PAYMENT_UNIT_IS_INVALID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +29,8 @@ class LottoPaymentTest {
 
         // when & then
         assertThatThrownBy(() -> new LottoPayment(amount))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(PAYMENT_IS_OUT_OF_RANGE.getMessage());
     }
 
     @DisplayName("로또 구입 금액이 1000으로 나누어 떨어지지 않으면 예외를 발생시킨다")
@@ -38,7 +41,8 @@ class LottoPaymentTest {
 
         // when & then
         assertThatThrownBy(() -> new LottoPayment(amount))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(PAYMENT_UNIT_IS_INVALID.getMessage());
     }
 
     @DisplayName("로또 개수 계산에 성공한다")

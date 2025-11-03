@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.common.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -38,7 +39,8 @@ class LottoWiningNumbersTest {
 
         // when & then
         assertThatThrownBy(() -> new LottoWiningNumbers(lottoNumbers))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(WINNING_NUMBER_IS_DUPLICATE.getMessage());
     }
 
     @DisplayName("로또 당첨 번호가 6개가 아니면 예외를 발생시킨다")
@@ -61,9 +63,11 @@ class LottoWiningNumbersTest {
 
         // when & then
         assertThatThrownBy(() -> new LottoWiningNumbers(lottoNumbers1))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(WINNING_NUMBER_COUNT_IS_INVALID.getMessage());
         assertThatThrownBy(() -> new LottoWiningNumbers(lottoNumbers2))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(WINNING_NUMBER_COUNT_IS_INVALID.getMessage());
     }
 
     @DisplayName("보너스 번호가 당첨번호와 겹치면 예외를 발생시킨다")
@@ -84,7 +88,8 @@ class LottoWiningNumbersTest {
 
         // when & then
         assertThatThrownBy(() -> winingNumbers.validateBonusNumber(bonusNumber))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(WINNING_NUMBER_AND_BONUS_NUMBER_IS_SAME.getMessage());
     }
 
 }

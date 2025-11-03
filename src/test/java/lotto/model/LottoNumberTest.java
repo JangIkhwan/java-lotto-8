@@ -3,6 +3,7 @@ package lotto.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static lotto.common.ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,9 +28,11 @@ class LottoNumberTest {
 
         // when & then
         assertThatThrownBy(() -> new LottoNumber(number1))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
         assertThatThrownBy(() -> new LottoNumber(number2))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
     }
 
     @DisplayName("값이 같으면 로또 번호는 동등하다")
